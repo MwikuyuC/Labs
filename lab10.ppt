@@ -1,0 +1,262 @@
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Лабораторная работа №10&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> &quot;Текстовой редактор vi&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Мвикую Кристиан Кристофер&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;17.04.2026&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> revealjs</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Что такое vi?</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Экранный редактор Visual display editor</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Установлен по умолчанию в большинстве дистрибутивов Linux</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Три режима работы</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Три режима работы vi</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Режим <span class="pp">|</span> Назначение <span class="pp">|</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|-------|------------|</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Командный <span class="pp">|</span> Навигация, удаление, копирование, вставка <span class="pp">|</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Вставки <span class="pp">|</span> Ввод и редактирование текста <span class="pp">|</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Последней строки <span class="pp">|</span> Сохранение, выход, поиск <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Переключение между режимами</span></span></code></pre></div>
+<pre><code>                ┌─────────────────────┐
+                │    КОМАНДНЫЙ РЕЖИМ    │
+                └──────────┬──────────┘
+                           │
+            Esc ───────────┼──────────── i, a, o, O
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │     РЕЖИМ ВСТАВКИ     │
+                └─────────────────────┘
+
+                ┌─────────────────────┐
+                │    КОМАНДНЫЙ РЕЖИМ    │
+                └──────────┬──────────┘
+                           │
+            Esc ───────────┼──────────── :
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │  РЕЖИМ ПОСЛЕДНЕЙ СТРОКИ │
+                └─────────────────────┘</code></pre>
+<pre><code>
+---
+
+## Управление курсором
+
+| Клавиша | Действие |
+|---------|----------|
+| h или ← | Влево |
+| l или → | Вправо |
+| j или ↓ | Вниз |
+| k или ↑ | Вверх |
+
+---
+
+## Команды позиционирования
+
+| Команда | Действие |
+|---------|----------|
+| 0 | В начало строки |
+| $ | В конец строки |
+| G | В конец файла |
+| nG | На строку n |
+
+---
+
+## Команды редактирования
+
+| Команда | Действие |
+|---------|----------|
+| i | Вставка перед курсором |
+| a | Вставка после курсора |
+| o | Новая строка снизу |
+| O | Новая строка сверху |
+| x | Удалить символ |
+| dw | Удалить слово |
+| dd | Удалить строку |
+| u | Отменить действие |
+
+---
+
+## Команды режима последней строки
+
+| Команда | Действие |
+|---------|----------|
+| :w | Сохранить файл |
+| :q | Выйти |
+| :wq | Сохранить и выйти |
+| :q! | Выйти без сохранения |
+
+---
+
+## Создание файла
+
+```bash
+vi hello.sh</code></pre>
+<p>Нажмите i для входа в режим вставки</p>
+<p>Введите текст:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">HELL</span><span class="op">=</span>Hello</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> hello</span> <span class="kw">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">HELLO</span><span class="op">=</span>World</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span></code></pre></div>
+<hr />
+<h2 id="сохранение-и-выход">Сохранение и выход</h2>
+<ol type="1">
+<li>Нажмите Esc (командный режим)</li>
+<li>Нажмите : (режим последней строки)</li>
+<li>Введите wq</li>
+<li>Нажмите Enter</li>
+</ol>
+<figure>
+<img src="S14.png" alt="Сохранение и выход" />
+<figcaption aria-hidden="true">Сохранение и выход</figcaption>
+</figure>
+<hr />
+<h2 id="сделать-файл-исполняемым">Сделать файл исполняемым</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x hello.sh</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> hello.sh</span></code></pre></div>
+<figure>
+<img src="S6.png" alt="Исполняемый файл" />
+<figcaption aria-hidden="true">Исполняемый файл</figcaption>
+</figure>
+<hr />
+<h2 id="редактирование-изменить-hell-на-hello">Редактирование: изменить
+HELL на HELLO</h2>
+<ol type="1">
+<li>Установите курсор на HELL</li>
+<li>Нажмите i</li>
+<li>Введите LLO</li>
+<li>Нажмите Esc</li>
+</ol>
+<figure>
+<img src="S8.png" alt="После изменения" />
+<figcaption aria-hidden="true">После изменения</figcaption>
+</figure>
+<hr />
+<h2 id="редактирование-исправить-local-на-local">Редактирование:
+исправить LOCAL на local</h2>
+<ol type="1">
+<li>Установите курсор на LOCAL</li>
+<li>Нажмите dw (удалить слово)</li>
+<li>Нажмите i</li>
+<li>Введите local</li>
+<li>Нажмите Esc</li>
+</ol>
+<figure>
+<img src="S10.png" alt="После исправления" />
+<figcaption aria-hidden="true">После исправления</figcaption>
+</figure>
+<hr />
+<h2 id="добавить-строку-в-конец-файла">Добавить строку в конец
+файла</h2>
+<ol type="1">
+<li>Нажмите G (перейти в конец)</li>
+<li>Нажмите o (новая строка снизу)</li>
+<li>Введите echo $HELLO</li>
+<li>Нажмите Esc</li>
+</ol>
+<figure>
+<img src="S11.png" alt="Строка добавлена" />
+<figcaption aria-hidden="true">Строка добавлена</figcaption>
+</figure>
+<hr />
+<h2 id="удалить-последнюю-строку">Удалить последнюю строку</h2>
+<ol type="1">
+<li>Нажмите G (перейти на последнюю строку)</li>
+<li>Нажмите dd (удалить строку)</li>
+</ol>
+<figure>
+<img src="S12.png" alt="Строка удалена" />
+<figcaption aria-hidden="true">Строка удалена</figcaption>
+</figure>
+<hr />
+<h2 id="отменить-удаление">Отменить удаление</h2>
+<p>Нажмите u в командном режиме</p>
+<figure>
+<img src="S13.png" alt="Строка восстановлена" />
+<figcaption aria-hidden="true">Строка восстановлена</figcaption>
+</figure>
+<hr />
+<h2 id="итоговый-скрипт">Итоговый скрипт</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">HELL</span><span class="op">=</span>Hello</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> hello</span> <span class="kw">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">HELLO</span><span class="op">=</span>World</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HELLO</span></span></code></pre></div>
+<hr />
+<h2 id="сводка-команд-vi">Сводка команд vi</h2>
+<table>
+<thead>
+<tr>
+<th>Режим</th>
+<th>Команда</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Командный</td>
+<td>h/j/k/l</td>
+<td>Перемещение курсора</td>
+</tr>
+<tr>
+<td>Командный</td>
+<td>G</td>
+<td>В конец файла</td>
+</tr>
+<tr>
+<td>Командный</td>
+<td>dd</td>
+<td>Удалить строку</td>
+</tr>
+<tr>
+<td>Командный</td>
+<td>dw</td>
+<td>Удалить слово</td>
+</tr>
+<tr>
+<td>Командный</td>
+<td>u</td>
+<td>Отменить действие</td>
+</tr>
+<tr>
+<td>Вставки</td>
+<td>i/a/o/O</td>
+<td>Вход в режим вставки</td>
+</tr>
+<tr>
+<td>Последней строки</td>
+<td>:wq</td>
+<td>Сохранить и выйти</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="основные-выводы">Основные выводы</h2>
+<ul>
+<li>Всегда нажимайте Esc перед сменой режимов</li>
+<li>vi различает регистр букв</li>
+<li>Практика помогает освоить vi</li>
+</ul>
+<h2 id="спасибо-за-внимание">Спасибо за внимание!</h2>
+<p>Мвикую Кристиан Кристофер Группа НБИБД-02-25 ```</p>

@@ -1,0 +1,516 @@
+<h1 id="цель-работы">1. Цель работы</h1>
+<p>Познакомиться с операционной системой Linux. Получить практические
+навыки работы с редактором vi, установленным по умолчанию практически во
+всех дистрибутивах.</p>
+<h1 id="теоретическая-часть">2. Теоретическая часть</h1>
+<h2 id="режимы-работы-редактора-vi">2.1. Режимы работы редактора vi</h2>
+<p>Редактор vi имеет три режима работы:</p>
+<ul>
+<li><strong>Командный режим</strong> — предназначен для ввода команд
+редактирования и навигации по редактируемому файлу;</li>
+<li><strong>Режим вставки</strong> — предназначен для ввода содержания
+редактируемого файла;</li>
+<li><strong>Режим последней (или командной) строки</strong> —
+используется для записи изменений в файл и выхода из редактора.</li>
+</ul>
+<h2 id="основные-команды-редактора-vi">2.2. Основные команды редактора
+vi</h2>
+<h3 id="команды-управления-курсором">Команды управления курсором</h3>
+<table>
+<thead>
+<tr>
+<th>Клавиша</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code> или <code>←</code></td>
+<td>Курсор влево</td>
+</tr>
+<tr>
+<td><code>l</code> или <code>→</code></td>
+<td>Курсор вправо</td>
+</tr>
+<tr>
+<td><code>j</code> или <code>↓</code></td>
+<td>Курсор вниз</td>
+</tr>
+<tr>
+<td><code>k</code> или <code>↑</code></td>
+<td>Курсор вверх</td>
+</tr>
+</tbody>
+</table>
+<h3 id="команды-позиционирования">Команды позиционирования</h3>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Переход в начало строки</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Переход в конец строки</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>Переход в конец файла</td>
+</tr>
+<tr>
+<td><code>nG</code></td>
+<td>Переход на строку с номером n</td>
+</tr>
+</tbody>
+</table>
+<h3 id="команды-редактирования">Команды редактирования</h3>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i</code></td>
+<td>Вставка текста перед курсором</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>Вставка текста после курсора</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>Вставка строки под курсором</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td>Вставка строки над курсором</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Удаление одного символа</td>
+</tr>
+<tr>
+<td><code>dw</code></td>
+<td>Удаление одного слова</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>Удаление одной строки</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>Отмена последнего действия</td>
+</tr>
+</tbody>
+</table>
+<h3 id="команды-режима-последней-строки">Команды режима последней
+строки</h3>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:w</code></td>
+<td>Записать файл</td>
+</tr>
+<tr>
+<td><code>:q</code></td>
+<td>Выйти из редактора</td>
+</tr>
+<tr>
+<td><code>:wq</code></td>
+<td>Записать файл и выйти</td>
+</tr>
+<tr>
+<td><code>:q!</code></td>
+<td>Выйти без сохранения</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ход-работы">3. Ход работы</h1>
+<h2 id="создание-каталога-и-файла">3.1. Создание каталога и файла</h2>
+<h3 id="создание-рабочего-каталога">3.1.1. Создание рабочего
+каталога</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> work/os/lab06</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> work/os/lab06</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<figure>
+<img src="S5.png" alt="Создание каталога" />
+<figcaption aria-hidden="true">Создание каталога</figcaption>
+</figure>
+<p><em>Рисунок 1: Создание каталога work/os/lab06</em></p>
+<h3 id="создание-файла-hello.sh-в-vi">3.1.2. Создание файла hello.sh в
+vi</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> hello.sh</span></code></pre></div>
+<figure>
+<img src="S5.png" alt="Запуск vi" />
+<figcaption aria-hidden="true">Запуск vi</figcaption>
+</figure>
+<p><em>Рисунок 2: Запуск редактора vi для создания файла
+hello.sh</em></p>
+<h2 id="ввод-текста-в-режиме-вставки">3.2. Ввод текста в режиме
+вставки</h2>
+<p>Нажатием клавиши <code>i</code> переходим в режим вставки и вводим
+следующий текст:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">HELL</span><span class="op">=</span>Hello</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> hello</span> <span class="kw">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">LOCAL</span> HELLO=World</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span></code></pre></div>
+<figure>
+<img src="S3.png" alt="Ввод текста в режиме вставки" />
+<figcaption aria-hidden="true">Ввод текста в режиме вставки</figcaption>
+</figure>
+<p><em>Рисунок 3: Ввод текста в режиме вставки (– INSERT –)</em></p>
+<h2 id="сохранение-файла-и-выход-из-vi">3.3. Сохранение файла и выход из
+vi</h2>
+<p>Для сохранения файла и выхода из редактора необходимо: 1. Нажать
+<code>Esc</code> для перехода в командный режим 2. Нажать <code>:</code>
+для перехода в режим последней строки 3. Ввести <code>wq</code> и нажать
+<code>Enter</code></p>
+<h2 id="предоставление-прав-на-выполнение">3.4. Предоставление прав на
+выполнение</h2>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x hello.sh</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> hello.sh</span></code></pre></div>
+<figure>
+<img src="S6.png" alt="Права на выполнение" />
+<figcaption aria-hidden="true">Права на выполнение</figcaption>
+</figure>
+<p><em>Рисунок 4: Файл hello.sh с правами -rwxr-xr-x</em></p>
+<h2 id="редактирование-существующего-файла">3.5. Редактирование
+существующего файла</h2>
+<h3 id="открытие-файла-для-редактирования">3.5.1. Открытие файла для
+редактирования</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> hello.sh</span></code></pre></div>
+<h3 id="изменение-hell-на-hello">3.5.2. Изменение HELL на HELLO</h3>
+<p>Установите курсор на слово HELL во второй строке, нажмите
+<code>i</code> для перехода в режим вставки, измените на HELLO, затем
+нажмите <code>Esc</code>.</p>
+<figure>
+<img src="S8.png" alt="Изменение HELL на HELLO" />
+<figcaption aria-hidden="true">Изменение HELL на HELLO</figcaption>
+</figure>
+<p><em>Рисунок 5: Файл после изменения HELL на HELLO</em></p>
+<h3 id="исправление-local-на-local">3.5.3. Исправление LOCAL на
+local</h3>
+<p>Установите курсор на слово LOCAL в четвёртой строке, нажмите
+<code>dw</code> для удаления слова, затем нажмите <code>i</code> и
+введите <code>local</code>, после чего нажмите <code>Esc</code>.</p>
+<figure>
+<img src="S10.png" alt="Исправление LOCAL на local" />
+<figcaption aria-hidden="true">Исправление LOCAL на local</figcaption>
+</figure>
+<p><em>Рисунок 6: Файл после изменения LOCAL на local</em></p>
+<h3 id="добавление-строки-в-конец-файла">3.5.4. Добавление строки в
+конец файла</h3>
+<p>Нажмите <code>G</code> для перехода в конец файла, затем нажмите
+<code>o</code> для создания новой строки и введите
+<code>echo $HELLO</code>, после чего нажмите <code>Esc</code>.</p>
+<figure>
+<img src="S11.png" alt="Добавление строки" />
+<figcaption aria-hidden="true">Добавление строки</figcaption>
+</figure>
+<p><em>Рисунок 7: Файл после добавления строки echo $HELLO</em></p>
+<h3 id="удаление-последней-строки">3.5.5. Удаление последней строки</h3>
+<p>Нажмите <code>G</code> для перехода на последнюю строку, затем
+нажмите <code>dd</code> для её удаления.</p>
+<figure>
+<img src="S12.png" alt="Удаление последней строки" />
+<figcaption aria-hidden="true">Удаление последней строки</figcaption>
+</figure>
+<p><em>Рисунок 8: Файл после удаления последней строки</em></p>
+<h3 id="отмена-удаления">3.5.6. Отмена удаления</h3>
+<p>Нажмите <code>u</code> для отмены последнего действия. Удалённая
+строка восстанавливается.</p>
+<figure>
+<img src="S13.png" alt="Отмена удаления" />
+<figcaption aria-hidden="true">Отмена удаления</figcaption>
+</figure>
+<p><em>Рисунок 9: Файл после отмены удаления (строка
+восстановлена)</em></p>
+<h3 id="сохранение-изменений-и-выход">3.5.7. Сохранение изменений и
+выход</h3>
+<p>Нажмите <code>:</code> для перехода в режим последней строки, введите
+<code>wq</code> и нажмите <code>Enter</code>.</p>
+<figure>
+<img src="S14.png" alt="Выход из vi" />
+<figcaption aria-hidden="true">Выход из vi</figcaption>
+</figure>
+<p><em>Рисунок 10: Выход из редактора после сохранения
+изменений</em></p>
+<h1 id="содержание-файла-hello.sh-после-всех-изменений">4. Содержание
+файла hello.sh после всех изменений</h1>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">HELL</span><span class="op">=</span>Hello</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> hello</span> <span class="kw">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">HELLO</span><span class="op">=</span>World</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HELLO</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HELLO</span></span></code></pre></div>
+<h1 id="ошибки-и-их-решение">5. Ошибки и их решение</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 27%" />
+<col style="width: 31%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>№</th>
+<th>Ошибка</th>
+<th>Причина</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>LOCAL HELLO=World</code> не работает</td>
+<td><code>LOCAL</code> должно быть строчными буквами</td>
+<td>Использовать <code>local HELLO=World</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Переменная <code>HELL</code> вместо <code>HELLO</code></td>
+<td>Опечатка в исходном коде</td>
+<td>Изменить на <code>HELLO=Hello</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Не удаётся выполнить команду в vi</td>
+<td>Нахождение в режиме вставки</td>
+<td>Нажать <code>Esc</code> для перехода в командный режим</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>q!</code> вместо <code>wq</code></td>
+<td>Желание выйти без сохранения</td>
+<td>Использовать <code>wq</code> для сохранения и выхода</td>
+</tr>
+</tbody>
+</table>
+<h1 id="выводы">6. Выводы</h1>
+<p>В ходе выполнения лабораторной работы были получены практические
+навыки работы с редактором vi:</p>
+<h3 id="режимы-работы-vi">Режимы работы vi:</h3>
+<ul>
+<li>Командный режим (Esc) — для навигации и команд редактирования</li>
+<li>Режим вставки (i, a, o, O) — для ввода текста</li>
+<li>Режим последней строки (:) — для сохранения и выхода</li>
+</ul>
+<h3 id="команды-навигации">Команды навигации:</h3>
+<ul>
+<li><code>h</code>, <code>j</code>, <code>k</code>, <code>l</code> или
+стрелки — перемещение курсора</li>
+<li><code>G</code> — переход в конец файла</li>
+<li><code>0</code> — переход в начало строки</li>
+<li><code>$</code> — переход в конец строки</li>
+</ul>
+<h3 id="команды-редактирования-1">Команды редактирования:</h3>
+<ul>
+<li><code>i</code> — вставка перед курсором</li>
+<li><code>a</code> — вставка после курсора</li>
+<li><code>o</code> — новая строка снизу</li>
+<li><code>O</code> — новая строка сверху</li>
+<li><code>dw</code> — удаление слова</li>
+<li><code>dd</code> — удаление строки</li>
+<li><code>u</code> — отмена последнего действия</li>
+</ul>
+<h3 id="команды-сохранения-и-выхода">Команды сохранения и выхода:</h3>
+<ul>
+<li><code>:w</code> — сохранить файл</li>
+<li><code>:q</code> — выйти</li>
+<li><code>:wq</code> — сохранить и выйти</li>
+<li><code>:q!</code> — выйти без сохранения</li>
+</ul>
+<p>Все поставленные задачи выполнены полностью. Навыки работы с
+редактором vi освоены и применены на практике.</p>
+<h1 id="ответы-на-контрольные-вопросы">7. Ответы на контрольные
+вопросы</h1>
+<h2 id="дайте-краткую-характеристику-режимам-работы-редактора-vi">7.1.
+Дайте краткую характеристику режимам работы редактора vi</h2>
+<ul>
+<li><strong>Командный режим</strong> — режим, в котором клавиши
+интерпретируются как команды редактирования и навигации. Переход из
+любого режима осуществляется клавишей <code>Esc</code>.</li>
+<li><strong>Режим вставки</strong> — режим, в котором вводимый текст
+добавляется в файл. Переход осуществляется командами <code>i</code>,
+<code>a</code>, <code>o</code>, <code>O</code>.</li>
+<li><strong>Режим последней строки</strong> — режим для ввода команд,
+связанных с файлом (сохранение, выход, поиск, замена). Переход
+осуществляется командой <code>:</code>.</li>
+</ul>
+<h2 id="как-выйти-из-редактора-не-сохраняя-произведённые-изменения">7.2.
+Как выйти из редактора, не сохраняя произведённые изменения?</h2>
+<p>Необходимо: 1. Нажать <code>Esc</code> для перехода в командный режим
+2. Нажать <code>:</code> для перехода в режим последней строки 3. Ввести
+<code>q!</code> и нажать <code>Enter</code></p>
+<h2
+id="назовите-и-дайте-краткую-характеристику-командам-позиционирования">7.3.
+Назовите и дайте краткую характеристику командам позиционирования</h2>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Характеристика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Перемещение курсора в начало текущей строки</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Перемещение курсора в конец текущей строки</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>Перемещение курсора в конец файла</td>
+</tr>
+<tr>
+<td><code>nG</code></td>
+<td>Перемещение курсора на строку с номером n</td>
+</tr>
+</tbody>
+</table>
+<h2 id="что-для-редактора-vi-является-словом">7.4. Что для редактора vi
+является словом?</h2>
+<p>Словом в vi считается последовательность символов, ограниченная
+пробелами, знаками табуляции, знаками препинания или концом строки.</p>
+<h2
+id="каким-образом-из-любого-места-редактируемого-файла-перейти-в-начало-конец-файла">7.5.
+Каким образом из любого места редактируемого файла перейти в начало
+(конец) файла?</h2>
+<ul>
+<li>В начало файла: нажать <code>1G</code> или <code>gg</code></li>
+<li>В конец файла: нажать <code>G</code></li>
+</ul>
+<h2
+id="назовите-и-дайте-краткую-характеристику-основным-группам-команд-редактирования">7.6.
+Назовите и дайте краткую характеристику основным группам команд
+редактирования</h2>
+<ul>
+<li><strong>Команды вставки</strong>: <code>i</code> (перед курсором),
+<code>a</code> (после курсора), <code>o</code> (строка снизу),
+<code>O</code> (строка сверху)</li>
+<li><strong>Команды удаления</strong>: <code>x</code> (символ),
+<code>dw</code> (слово), <code>dd</code> (строка)</li>
+<li><strong>Команды отмены</strong>: <code>u</code> (отмена последнего
+действия)</li>
+</ul>
+<h2
+id="необходимо-заполнить-строку-символами-.-каковы-ваши-действия">7.7.
+Необходимо заполнить строку символами $. Каковы ваши действия?</h2>
+<ol type="1">
+<li>Нажать <code>Esc</code> для перехода в командный режим</li>
+<li>Нажать <code>0</code> для перехода в начало строки</li>
+<li>Нажать <code>i</code> для входа в режим вставки</li>
+<li>Вводить символы <code>$</code></li>
+<li>Нажать <code>Esc</code> для возврата в командный режим</li>
+</ol>
+<h2
+id="как-отменить-некорректное-действие-связанное-с-процессом-редактирования">7.8.
+Как отменить некорректное действие, связанное с процессом
+редактирования?</h2>
+<p>Нажать <code>u</code> в командном режиме. Это отменит последнее
+выполненное действие.</p>
+<h2
+id="назовите-и-дайте-характеристику-основным-группам-команд-режима-последней-строки">7.9.
+Назовите и дайте характеристику основным группам команд режима последней
+строки</h2>
+<ul>
+<li><strong>Команды работы с файлами</strong>: <code>:w</code> (запись),
+<code>:q</code> (выход), <code>:wq</code> (запись и выход)</li>
+<li><strong>Команды настройки</strong>: <code>:set nu</code> (нумерация
+строк), <code>:set ic</code> (игнорирование регистра)</li>
+</ul>
+<h2
+id="как-определить-не-перемещая-курсора-позицию-в-которой-заканчивается-строка">7.10.
+Как определить, не перемещая курсора, позицию, в которой заканчивается
+строка?</h2>
+<p>В командном режиме нажать <code>$</code>. Курсор переместится в конец
+строки.</p>
+<h2 id="выполните-анализ-опций-редактора-vi">7.11. Выполните анализ
+опций редактора vi</h2>
+<p>Опции редактора vi задаются командой <code>:set</code>: -
+<code>:set all</code> — вывод полного списка опций -
+<code>:set nu</code> — вывод номеров строк - <code>:set list</code> —
+вывод невидимых символов - <code>:set ic</code> — игнорирование регистра
+при поиске</p>
+<p>Для отключения опции используется <code>no</code> перед именем:
+<code>:set nonu</code></p>
+<h2 id="как-определить-режим-работы-редактора-vi">7.12. Как определить
+режим работы редактора vi?</h2>
+<ul>
+<li><strong>Командный режим</strong>: внизу экрана нет специальных
+индикаторов</li>
+<li><strong>Режим вставки</strong>: внизу экрана отображается
+<code>-- INSERT --</code></li>
+<li><strong>Режим последней строки</strong>: внизу экрана появляется
+двоеточие <code>:</code> после нажатия <code>:</code></li>
+</ul>
+<h2 id="граф-взаимосвязи-режимов-работы-редактора-vi">7.13. Граф
+взаимосвязи режимов работы редактора vi</h2>
+<pre><code>                    ┌─────────────────┐
+                    │                 │
+                    │  КОМАНДНЫЙ РЕЖИМ │
+                    │                 │
+                    └────────┬────────┘
+                           │
+            Esc ────────────┼──────────── i, a, o, O
+                           │
+                           ▼
+                    ┌─────────────────┐
+                    │                 │
+                    │  РЕЖИМ ВСТАВКИ   │
+                    │                 │
+                    └─────────────────┘
+
+                    ┌─────────────────┐
+                    │                 │
+                    │  КОМАНДНЫЙ РЕЖИМ │
+                    │                 │
+                    └────────┬────────┘
+                           │
+            Esc ────────────┼──────────── :
+                           │
+                           ▼
+                    ┌─────────────────┐
+                    │                 │
+                    │  РЕЖИМ ПОСЛЕДНЕЙ │
+                    │     СТРОКИ      │
+                    │                 │
+                    └─────────────────┘</code></pre>
+<h1 id="список-литературы">8. Список литературы</h1>
+<ol type="1">
+<li>Кулябов, Д.С. Операционные системы: лабораторные работы / Д.С.
+Кулябов, А.В. Королькова, М.В. Абрамян. — М.: РУДН, 2025.</li>
+<li>man-страницы Linux: vi(1), vim(1)</li>
+</ol>
+<hr />
